@@ -1,0 +1,73 @@
+﻿@model GmsSolutions.Entities.Venda
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3> Excluir ! </h3>
+
+<h3> Realmente Desejas Excluir estes Dados ? </h3>
+<div>
+    <h4>Venda</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayName("Nome do Produto")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Qde do Produto")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QdeProduto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Data da Venda")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataVenda)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Forma de Pagamento")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FormaPg)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Pagamentos à Receber")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PgaReceber)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-danger" /> |
+            @Html.ActionLink("Cancelar", "Index", new { }, new { @class = "btn btn-warning" })
+        </div>
+    }
+</div>

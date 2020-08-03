@@ -1,0 +1,56 @@
+﻿@model GmsSolutions.Entities.Produto
+
+@{
+    ViewBag.Title = "Detalhes Sobre o Produto";
+}
+
+<div>
+    <h4>Produto -  @Html.DisplayFor(model => model.Descricao) </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Última Compra")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UltimaCompra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estoque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estoque)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fornecedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fornecedor)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.Id },new { @class="btn btn-success"}) |
+    @Html.ActionLink("Voltar", "Index", new { }, new { @class="btn btn-warning"})
+</p>

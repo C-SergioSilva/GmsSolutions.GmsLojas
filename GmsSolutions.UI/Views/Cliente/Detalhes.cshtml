@@ -1,0 +1,58 @@
+﻿@model GmsSolutions.Entities.Cliente
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h3>Detalhes</h3>
+
+<div>
+    <h4>Clientes ! -  @Html.DisplayNameFor(model => model.Nome)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contato)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contato)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SobreNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SobreNome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.ClienteId }, new {@class="btn btn-success" }) |
+    @Html.ActionLink("Voltar", "Index", new { }, new {@class="btn btn-warning" })
+</p>

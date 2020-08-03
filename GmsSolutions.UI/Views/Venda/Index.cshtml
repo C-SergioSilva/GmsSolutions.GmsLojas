@@ -1,0 +1,80 @@
+﻿@model IEnumerable<GmsSolutions.Entities.Venda>
+
+
+@{
+    ViewBag.Title = "Lista De Vendas";
+}
+
+<h2> Relação de Vendas ! </h2>
+
+<p>
+    @Html.ActionLink("Nova Venda", "Cadastrar",  new { }, new { @Class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Produto")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=> model.Cliente.Nome)
+        </th>
+
+        <th>
+            @Html.DisplayName("Quantidade ")
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Valor)
+        </th>
+        <th>
+            @Html.DisplayName("Data da Venda")
+        </th>
+
+        <th>
+            @Html.DisplayName("Tipo de venda")
+        </th>
+
+        <th>
+            @Html.DisplayName("Pagamento a Receber")
+        </th>
+    </tr>
+
+ @foreach (var item in Model)
+  {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomeProd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QdeProduto)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Valor)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.DataVenda)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.FormaPg)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.PgaReceber)
+        </td>
+
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id = item.VendaId }, new { @Class = "btn btn-success" })
+            @Html.ActionLink("Detalhes", "DetaLhes", new { id = item.VendaId }, new { @Class = "btn btn-info" })
+            @Html.ActionLink("Excluir", "Delete", new { id = item.VendaId }, new { @Class = "btn btn-danger" })
+        </td>
+
+    </tr>  
+  }
+
+</table>

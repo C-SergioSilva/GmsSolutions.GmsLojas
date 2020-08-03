@@ -1,0 +1,58 @@
+﻿@model IEnumerable<GmsSolutions.Entities.Cliente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Novo Cliente", "Cadastrar", new { }, new { @Class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contato)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SobreNome)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contato)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SobreNome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Endereco)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id = item.ClienteId }, new { @Class = "btn btn-success" })
+            @Html.ActionLink("Detalhes", "DetaLhes", new { id = item.ClienteId }, new { @Class = "btn btn-info" })
+            @Html.ActionLink("Excluir", "Delete", new { id = item.ClienteId }, new { @Class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

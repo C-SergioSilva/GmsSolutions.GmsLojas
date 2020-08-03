@@ -1,0 +1,180 @@
+﻿
+@{
+
+
+    ViewBag.Title = "Index";
+}
+
+<h2>Categorias</h2>
+
+@using (Html.BeginForm())
+{
+
+    <button id="btngetLista"> Listas de Categorias </button>
+    <button id="btngetCategoria">  Categoria </button>
+    <button id="btnAdd"> Nova Categoria </button>
+    <button id="btnUpDate"> Atualizar Categoria </button>
+    <button id="btnDelete"> Excluir Categoria </button>
+
+    <br /> <br />
+
+    <input id="txtId" type="text" placeholder="Id" />
+    <input id="txtDescricao" type="text" placeholder="Descrição" />
+
+    <br /> <br />
+
+    <div id="lblMensage"> </div>
+
+ }
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(function () {
+            $("#btngetLista").on("click", function () {
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/api/CategoriaAPI/',
+                    datatype: 'json',
+                    cache: false,
+                })
+                    .success(function (data) {
+                        var saida = '';
+                        for (var i = 0; i < data.length; i++) {
+
+                            saida += '<hr><br>';
+                            saida += '<b> Id: </b>' + data[i].Id + '<br>';
+                            saida += '<b> Descrição>: </b>' + data[i].Descricao + '<br>';
+                        }
+                        $("#lblMensage").html(saida);
+                    })
+
+                    .error(function (xhr, ajaxOptions, throwError) {
+
+                        $("#lblMensage").html(" Ocoreu um erro !!! ");
+
+                    });
+
+                return false;
+            });
+
+            $("#btngetCategoria").on("click", function () {
+                var categoriaId = $('txtId').val();
+
+                if (categoriaId == "") {
+                    $("#lblMensage").html(" Ocoreu um erro ID nullo !!! ");
+                }
+
+                $.ajax({
+                    type: 'GET',
+                    url: '/api/CategoriaAPI/' + categoriaId,
+                    datatype: 'json',
+                    cache: false,
+                })
+                    .success(function (data) {
+                        if (data != null) {
+
+                            var saida = '';
+                            saida += '<hr><br>';
+                            saida += '<b> Id: </b>' + data.Id + '<br>';
+                            saida += '<b> Descrição>: </b>' + data.Descricao + '<br>';
+
+                            $("#lblMensage").html(saida);
+                        }
+                        else {
+                            $("#lblMensage").html(" Categoria não encontrada !!! ");
+                        }
+                    })
+
+                    .error(function (xhr, ajaxOptions, throwError) {
+
+                        $("#lblMensage").html(" Ocoreu um erro !!! ");
+
+                    });
+
+                return false;
+            });
+
+            $("#btnAdd").on("click", function () {
+
+                var descricao = $('txtDescricao').val();
+
+                if (descricao == "") {
+                    $("#lblMensage").html(" Ocoreu um erro descricao nullo !!! ");
+                    return false;
+                }
+
+                var categoria = { Descricao: descricao };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/CategoriaAPI/',
+                    data: categoria,
+                    datatype: 'json',
+                    cache: false,
+                })
+                    .success(function (data) {
+                        
+
+                        var saida = '';
+                        saida += '<hr>Categoria<br>';
+                        saida += '<b> Id: </b>' + data.Id + '<br>';
+                        saida += '<b> Descrição>: </b>' + data.Descricao + '<br>';
+
+                        $("#lblMensage").html(saida);
+                       
+                    })
+
+                    .error(function (xhr, ajaxOptions, throwError) {
+
+                        $("#lblMensage").html(" Ocoreu um erro !!! ");
+
+                    });
+
+                return false;
+            });
+
+            $("#btnUpDate").on("click", function () {
+                return false;
+            });
+
+            $("#btnDelete").on("click", function () {
+                return false;
+            });
+
+            $(document).ajaxStart(function () {
+
+                $("#loading").show();
+
+            });
+
+            $(document).ajaxStop(function () {
+
+                $("#loading").hide();
+
+            });
+
+        });
+
+    </script>
+}
+
+<style type="text/css">
+    #loading {
+        display: none;
+        background-color: gray;
+        z-index: 999999;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        padding-top: 300px;
+        filter: alpha(opacity=75);
+        opacity: 0.75;
+    }
+</style>
+<div id="loading"><img src="~/Images/esperar.gif" /></div>
+

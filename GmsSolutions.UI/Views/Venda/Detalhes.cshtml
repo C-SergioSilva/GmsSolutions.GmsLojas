@@ -1,0 +1,66 @@
+﻿@model GmsSolutions.Entities.Venda
+
+@{
+    ViewBag.Title = "DetaLhes";
+}
+
+<h3> Detalhes ! </h3>
+
+<div>
+    <h4>Venda</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Nome do Produto")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomeProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Qde do Produto")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QdeProduto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Data da Venda")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataVenda)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Forma de Pg")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FormaPg)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Pagamento à Receber")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PgaReceber)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editar", new { id = Model.VendaId }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Voltar", "Index", new { }, new { @class = "btn btn-warning" })
+</p>

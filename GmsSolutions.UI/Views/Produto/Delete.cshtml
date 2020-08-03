@@ -1,0 +1,63 @@
+﻿@model GmsSolutions.Entities.Produto
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3> Excluir ? </h3>
+
+<h4> Realmente Deseja Excluir esses Dados ? </h4>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Última Compra")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UltimaCompra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estoque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estoque)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fornecedor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fornecedor)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-success" /> |
+            @Html.ActionLink("Cancelar", "Index", new { }, new { @class="btn btn-warning"})
+        </div>
+    }
+</div>
